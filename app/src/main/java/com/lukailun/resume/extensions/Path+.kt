@@ -5,17 +5,21 @@ import androidx.compose.ui.graphics.Path
 import com.lukailun.resume.screens.launch.models.LetterStep
 import com.lukailun.resume.screens.launch.models.LetterStepKey
 import com.lukailun.resume.screens.launch.models.Letters
-import com.squareup.moshi.Moshi
+import com.lukailun.resume.utils.DataManager
+import java.io.IOException
 
-fun Path.Companion.M(context: Context): Path {
-    return Path().apply {
-        val inputStream = context.assets.open("Letters.json")
-        val jsonString = inputStream.bufferedReader().use { it.readText() }
-        val moshi = Moshi.Builder().build()
-        val adapter = moshi.adapter(Letters::class.java)
-        val letters = adapter.fromJson(jsonString) ?: return@apply
-        letters.M.forEach { handle(it) }
+fun Path.Companion.letters(context: Context): Pair<Path, Path> {
+    val MPath = Path()
+    val ePath = Path()
+    val manager = DataManager(context, "Letters.json")
+    val letters = try {
+        manager.fetchData(Letters::class.java)
+    } catch (e: IOException) {
+        null
     }
+    letters?.M?.forEach { MPath.handle(it) }
+    letters?.e?.forEach { ePath.handle(it) }
+    return Pair(MPath, ePath)
 }
 
 
@@ -38,13 +42,13 @@ private fun Path.handle(step: LetterStep) {
                 params.endPoint.y
             )
         }
-        LetterStepKey.CURVE -> {
+        LetterStepKey.LINE -> {
             val params = step.params ?: return
             lineTo(
                 params.endPoint.x,
                 params.endPoint.y
             )
         }
-        LetterStepKey.CURVE -> close()
+        LetterStepKey.CLOSE -> close()
     }
 }
