@@ -81,7 +81,7 @@ fun LaunchView() {
                     val steps = letters?.M ?: listOf()
                     val modifier = Modifier
                         .size(150.dp)
-                        .offset(x = 65.dp)
+                        .offset(x = 64.dp)
                     Canvas(
                         modifier = modifier
                     ) {
