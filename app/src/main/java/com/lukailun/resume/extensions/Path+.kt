@@ -1,6 +1,7 @@
 package com.lukailun.resume.extensions
 
 import android.content.Context
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Path
 import com.lukailun.resume.screens.launch.models.LetterStep
 import com.lukailun.resume.screens.launch.models.LetterStepKey
@@ -9,7 +10,7 @@ import com.lukailun.resume.utils.DataManager
 import java.io.IOException
 
 fun Path.Companion.letters(context: Context): Pair<Path, Path> {
-    val MPath = Path()
+    val mPath = Path()
     val ePath = Path()
     val manager = DataManager(context, "Letters.json")
     val letters = try {
@@ -17,13 +18,27 @@ fun Path.Companion.letters(context: Context): Pair<Path, Path> {
     } catch (e: IOException) {
         null
     }
-    letters?.M?.forEach { MPath.handle(it) }
+    letters?.M?.forEach { mPath.handle(it) }
     letters?.e?.forEach { ePath.handle(it) }
-    return Pair(MPath, ePath)
+    return Pair(mPath, ePath)
+}
+
+fun Path.Companion.offsets(context: Context): Pair<List<Offset>, List<Offset>> {
+    val manager = DataManager(context, "Letters.json")
+    val letters = try {
+        manager.fetchData(Letters::class.java)
+    } catch (e: IOException) {
+        null
+    }
+    val mOffsets =
+        letters?.M?.mapNotNull { it.params?.endPoint }?.map { Offset(it.x, it.y) } ?: listOf()
+    val eOffsets =
+        letters?.e?.mapNotNull { it.params?.endPoint }?.map { Offset(it.x, it.y) } ?: listOf()
+    return Pair(mOffsets, eOffsets)
 }
 
 
-private fun Path.handle(step: LetterStep) {
+fun Path.handle(step: LetterStep) {
     when (step.key) {
         LetterStepKey.POINT -> {
             val params = step.params ?: return
@@ -45,8 +60,7 @@ private fun Path.handle(step: LetterStep) {
         LetterStepKey.LINE -> {
             val params = step.params ?: return
             lineTo(
-                params.endPoint.x,
-                params.endPoint.y
+                params.endPoint.x, params.endPoint.y
             )
         }
         LetterStepKey.CLOSE -> close()
