@@ -37,7 +37,7 @@ fun LaunchView() {
                         .offset(x = 58.dp)
                 ) {
                     val M = Path.letters(context).first
-                    drawPath(path = M, color = Color.White)
+//                    drawPath(path = M, color = Color.White)
                     drawPath(path = M, color = Color.Black, style = Stroke(2F))
                 }
                 Spacer(modifier = Modifier.weight(1F))
@@ -54,7 +54,7 @@ fun LaunchView() {
                         .offset(y = 26.dp)
                 ) {
                     val e = Path.letters(context).second
-                    drawPath(path = e, color = Color.White)
+//                    drawPath(path = e, color = Color.White)
                     drawPath(path = e, color = Color.Black, style = Stroke(2F))
                 }
                 Spacer(modifier = Modifier.weight(1F))
