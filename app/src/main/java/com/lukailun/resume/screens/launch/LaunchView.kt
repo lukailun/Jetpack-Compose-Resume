@@ -8,6 +8,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -36,7 +37,8 @@ fun LaunchView() {
                         .offset(x = 58.dp)
                 ) {
                     val M = Path.letters(context).first
-                    drawPath(M, Color.White)
+                    drawPath(path = M, color = Color.White)
+                    drawPath(path = M, color = Color.Black, style = Stroke(2F))
                 }
                 Spacer(modifier = Modifier.weight(1F))
             }
@@ -52,7 +54,8 @@ fun LaunchView() {
                         .offset(y = 26.dp)
                 ) {
                     val e = Path.letters(context).second
-                    drawPath(e, Color.White)
+                    drawPath(path = e, color = Color.White)
+                    drawPath(path = e, color = Color.Black, style = Stroke(2F))
                 }
                 Spacer(modifier = Modifier.weight(1F))
             }
