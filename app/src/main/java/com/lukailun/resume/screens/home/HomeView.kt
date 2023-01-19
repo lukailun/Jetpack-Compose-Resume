@@ -26,16 +26,17 @@ import com.lukailun.resume.ui.theme.ResumeTheme
 import com.lukailun.resume.utils.DataManager
 
 @Composable
-fun HomeView(
-    viewModel: HomeViewModel = HomeViewModel(
-        dataManager = DataManager(
-            LocalContext.current,
-            fileName = "Bio.json",
-        ),
-    ),
-) {
+fun HomeView() {
+    val context = LocalContext.current
+    val viewModel = remember {
+        HomeViewModel(
+            dataManager = DataManager(
+                context,
+                fileName = "Bio.json",
+            ),
+        )
+    }
     var size by remember { mutableStateOf(Size.Zero) }
-    val index = viewModel.index
 
     Box(
         modifier = Modifier
@@ -60,7 +61,7 @@ fun HomeView(
                     contentScale = ContentScale.Fit,
                     modifier = Modifier.width(200.dp),
                 )
-                Text(text = index.toString())
+                Text(text = viewModel.content)
             }
         }
         Column(modifier = Modifier.fillMaxSize()) {

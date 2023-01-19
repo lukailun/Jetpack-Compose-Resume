@@ -13,7 +13,7 @@ class HomeViewModel(private val dataManager: DataManager) : ViewModel() {
 
     val content: String
         get() {
-            if (content.isEmpty() || index >= contents.size) {
+            if (contents.isEmpty() || index >= contents.size) {
                 return ""
             }
             return contents[index]
@@ -26,6 +26,7 @@ class HomeViewModel(private val dataManager: DataManager) : ViewModel() {
         get() = index < contents.size - 1
 
     init {
+        println("HomeViewModelInit")
         fetchContents()
     }
 
@@ -41,7 +42,6 @@ class HomeViewModel(private val dataManager: DataManager) : ViewModel() {
 
     fun next() {
         if (isNextEnabled) index += 1
-        println("Index: $index")
     }
 
     fun previous() {
