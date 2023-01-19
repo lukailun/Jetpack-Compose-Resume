@@ -5,6 +5,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.IconButton
+import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -34,6 +35,7 @@ fun HomeView(
     ),
 ) {
     var size by remember { mutableStateOf(Size.Zero) }
+    val state = viewModel.index.value
 
     Box(
         modifier = Modifier
@@ -58,6 +60,7 @@ fun HomeView(
                     contentScale = ContentScale.Fit,
                     modifier = Modifier.width(200.dp),
                 )
+                Text(text = state.toString())
             }
         }
         Column(modifier = Modifier.fillMaxSize()) {
