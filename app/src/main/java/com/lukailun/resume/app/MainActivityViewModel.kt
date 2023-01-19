@@ -7,7 +7,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class MainActivityViewModel : ViewModel() {
-    var isLaunching = mutableStateOf(true)
+    val isLaunching = mutableStateOf(true)
 
     init {
         viewModelScope.launch {
