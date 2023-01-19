@@ -19,9 +19,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.toSize
 import com.lukailun.resume.R
 import com.lukailun.resume.extensions.Pink
+import com.lukailun.resume.ui.theme.Muyao
 import com.lukailun.resume.ui.theme.ResumeTheme
 import com.lukailun.resume.utils.DataManager
 
@@ -61,7 +63,7 @@ fun HomeView() {
                     contentScale = ContentScale.Fit,
                     modifier = Modifier.width(200.dp),
                 )
-                Text(text = viewModel.content)
+                Text(text = viewModel.content, fontFamily = Muyao, fontSize = 21.sp)
             }
         }
         Column(modifier = Modifier.fillMaxSize()) {
