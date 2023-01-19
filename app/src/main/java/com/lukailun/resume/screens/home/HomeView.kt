@@ -1,10 +1,17 @@
 package com.lukailun.resume.screens.home
 
+import android.widget.ImageButton
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonColors
+import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.IconButton
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
@@ -50,6 +57,43 @@ fun HomeView() {
                 )
             }
         }
+        Column(modifier = Modifier.fillMaxSize()) {
+            Spacer(modifier = Modifier.weight(1F))
+            Row {
+                Spacer(modifier = Modifier.weight(1F))
+                ToolbarButton(resourceId = R.drawable.toolbar_arrow_clockwise) {
+                    println("Refresh")
+                }
+                Spacer(modifier = Modifier.width(12.dp))
+                ToolbarButton(resourceId = R.drawable.toolbar_caret_left, enabled = false) {
+                    println("Preview")
+                }
+                Spacer(modifier = Modifier.width(12.dp))
+                ToolbarButton(resourceId = R.drawable.toolbar_caret_right) {
+                    println("Next")
+                }
+                Spacer(modifier = Modifier.width(12.dp))
+            }
+            Spacer(modifier = Modifier.height(10.dp))
+        }
+    }
+}
+
+@Composable
+private fun ToolbarButton(
+    @DrawableRes resourceId: Int,
+    enabled: Boolean = true,
+    onClick: () -> Unit,
+) {
+    IconButton(onClick = onClick, enabled = enabled) {
+        Image(
+            painter = painterResource(id = resourceId),
+            contentDescription = null,
+            contentScale = ContentScale.Fit,
+            modifier = Modifier
+                .width(30.dp)
+                .alpha(if (enabled) 1F else 0.5F),
+        )
     }
 }
 
