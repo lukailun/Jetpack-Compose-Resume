@@ -26,7 +26,6 @@ class HomeViewModel(private val dataManager: DataManager) : ViewModel() {
         get() = index < contents.size - 1
 
     init {
-        println("HomeViewModelInit")
         fetchContents()
     }
 
