@@ -35,7 +35,7 @@ fun HomeView(
     ),
 ) {
     var size by remember { mutableStateOf(Size.Zero) }
-    val state = viewModel.index.value
+    val index = viewModel.index
 
     Box(
         modifier = Modifier
@@ -60,7 +60,7 @@ fun HomeView(
                     contentScale = ContentScale.Fit,
                     modifier = Modifier.width(200.dp),
                 )
-                Text(text = state.toString())
+                Text(text = index.toString())
             }
         }
         Column(modifier = Modifier.fillMaxSize()) {
