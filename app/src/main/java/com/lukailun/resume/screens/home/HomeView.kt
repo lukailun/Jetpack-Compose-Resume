@@ -19,14 +19,20 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.lukailun.resume.R
 import com.lukailun.resume.extensions.Pink
 import com.lukailun.resume.ui.theme.ResumeTheme
+import com.lukailun.resume.utils.DataManager
 
 @Composable
-fun HomeView(viewModel: HomeViewModel = viewModel()) {
-    val context = LocalContext.current
+fun HomeView(
+    viewModel: HomeViewModel = HomeViewModel(
+        dataManager = DataManager(
+            LocalContext.current,
+            fileName = "Bio.json",
+        ),
+    ),
+) {
     var size by remember { mutableStateOf(Size.Zero) }
 
     Box(
