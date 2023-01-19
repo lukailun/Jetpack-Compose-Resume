@@ -29,7 +29,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background,
                 ) {
                     AnimatedVisibility(
-                        visible = !viewModel.isLaunching.value,
+                        visible = !viewModel.isLaunching,
                         enter = fadeIn(
                             animationSpec = tween(
                                 durationMillis = 2000, easing = LinearEasing
@@ -40,7 +40,7 @@ class MainActivity : ComponentActivity() {
                         HomeView()
                     }
                     AnimatedVisibility(
-                        visible = viewModel.isLaunching.value,
+                        visible = viewModel.isLaunching,
                         exit = fadeOut(
                             animationSpec = tween(
                                 durationMillis = 2000, easing = LinearEasing
