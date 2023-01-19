@@ -1,13 +1,9 @@
 package com.lukailun.resume.screens.home
 
-import android.widget.ImageButton
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonColors
-import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.IconButton
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -23,12 +19,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.lukailun.resume.R
 import com.lukailun.resume.extensions.Pink
 import com.lukailun.resume.ui.theme.ResumeTheme
 
 @Composable
-fun HomeView() {
+fun HomeView(viewModel: HomeViewModel = viewModel()) {
     val context = LocalContext.current
     var size by remember { mutableStateOf(Size.Zero) }
 
@@ -62,15 +59,21 @@ fun HomeView() {
             Row {
                 Spacer(modifier = Modifier.weight(1F))
                 ToolbarButton(resourceId = R.drawable.toolbar_arrow_clockwise) {
-                    println("Refresh")
+                    viewModel.reset()
                 }
                 Spacer(modifier = Modifier.width(12.dp))
-                ToolbarButton(resourceId = R.drawable.toolbar_caret_left, enabled = false) {
-                    println("Preview")
+                ToolbarButton(
+                    resourceId = R.drawable.toolbar_caret_left,
+                    enabled = viewModel.isPreviousEnabled,
+                ) {
+                    viewModel.previous()
                 }
                 Spacer(modifier = Modifier.width(12.dp))
-                ToolbarButton(resourceId = R.drawable.toolbar_caret_right) {
-                    println("Next")
+                ToolbarButton(
+                    resourceId = R.drawable.toolbar_caret_right,
+                    enabled = viewModel.isNextEnabled,
+                ) {
+                    viewModel.next()
                 }
                 Spacer(modifier = Modifier.width(12.dp))
             }
