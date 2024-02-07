@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    kotlin("kapt")
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -67,7 +67,7 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
 
     implementation(libs.moshi)
-    kapt("com.squareup.moshi:moshi-kotlin-codegen:1.15.1")
+    ksp(libs.moshiCodegen)
 //    implementation("androidx.core:core-ktx:1.12.0")
 //    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
 //    implementation("androidx.activity:activity-compose:1.7.0")
