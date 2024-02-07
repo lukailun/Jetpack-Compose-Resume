@@ -1,8 +1,6 @@
 package com.lukailun.resume.utils
 
 import com.squareup.moshi.Moshi
-import com.lukailun.resume.models.InvalidJSONException
-import java.io.IOException
 
 class DataParser(
     private val jsonString: String
