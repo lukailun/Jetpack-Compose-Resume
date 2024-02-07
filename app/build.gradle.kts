@@ -55,7 +55,7 @@ dependencies {
     implementation("androidx.activity:activity-compose:1.7.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation(platform("androidx.compose:compose-bom:2023.08.00"))
-    implementation("com.google.android.material:material:1.3.1")
+    implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.compose.material:material")
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
