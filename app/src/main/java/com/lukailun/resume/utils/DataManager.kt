@@ -22,6 +22,10 @@ class DataManager(
         } catch (e: IOException) {
             throw InvalidJSONException()
         }
+        println("InputStream: 1")
+        println(type)
+        println(jsonString)
+        println("InputStream: 2")
         return parser.parse(type)
     }
 }
