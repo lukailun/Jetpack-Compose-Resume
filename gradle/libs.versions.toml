@@ -1,5 +1,13 @@
 [versions]
 
+activityCompose = "1.9.2"
+composeBom = "2024.09.03"
+composeBomVersion = "2024.05.00"
+coreKtx = "1.13.1"
+espressoCore = "3.6.1"
+junit = "4.13.2"
+junitVersion = "1.2.1"
+lifecycleRuntimeKtx = "2.8.6"
 minSdk = "26"
 compileSdk = "34"
 
@@ -15,10 +23,22 @@ material = "1.7.3"
 moshi = "1.15.1"
 
 [libraries]
+activityCompose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+composeBom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
+composeBomV20240500 = { module = "androidx.compose:compose-bom", version.ref = "composeBomVersion" }
+coreKtx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
+espressoCore = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCore" }
+extJunit = { module = "androidx.test.ext:junit", version.ref = "junitVersion" }
+junit = { module = "junit:junit", version.ref = "junit" }
+lifecycleRuntimeKtx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 material = { group = "androidx.compose.material", name = "material", version.ref = "material" }
 moshi = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshi" }
 moshiCodegen = { module = "com.squareup.moshi:moshi-kotlin-codegen", version.ref = "moshi" }
+ui = { module = "androidx.compose.ui:ui" }
+uiGraphics = { module = "androidx.compose.ui:ui-graphics" }
+uiTestJunit4 = { module = "androidx.compose.ui:ui-test-junit4" }
+uiToolingPreview = { module = "androidx.compose.ui:ui-tooling-preview" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
