@@ -63,7 +63,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.extJunit)
     androidTestImplementation(libs.espressoCore)
-    androidTestImplementation(platform(libs.composeBomV20240500))
     androidTestImplementation(libs.uiTestJunit4)
     implementation(libs.moshi)
     ksp(libs.moshiCodegen)
