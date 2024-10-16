@@ -70,19 +70,19 @@ fun HomeView() {
             Spacer(modifier = Modifier.weight(1F))
             Row {
                 Spacer(modifier = Modifier.weight(1F))
-                ToolbarButton(resourceId = R.drawable.toolbar_arrow_clockwise) {
+                ToolbarButton(resourceId = R.drawable.toolbar_clockwise) {
                     viewModel.reset()
                 }
                 Spacer(modifier = Modifier.width(12.dp))
                 ToolbarButton(
-                    resourceId = R.drawable.left,
+                    resourceId = R.drawable.toolbar_left,
                     enabled = viewModel.isPreviousEnabled,
                 ) {
                     viewModel.previous()
                 }
                 Spacer(modifier = Modifier.width(12.dp))
                 ToolbarButton(
-                    resourceId = R.drawable.right,
+                    resourceId = R.drawable.toolbar_right,
                     enabled = viewModel.isNextEnabled,
                 ) {
                     viewModel.next()
