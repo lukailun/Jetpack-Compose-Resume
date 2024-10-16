@@ -75,14 +75,14 @@ fun HomeView() {
                 }
                 Spacer(modifier = Modifier.width(12.dp))
                 ToolbarButton(
-                    resourceId = R.drawable.toolbar_caret_left,
+                    resourceId = R.drawable.left,
                     enabled = viewModel.isPreviousEnabled,
                 ) {
                     viewModel.previous()
                 }
                 Spacer(modifier = Modifier.width(12.dp))
                 ToolbarButton(
-                    resourceId = R.drawable.toolbar_caret_right,
+                    resourceId = R.drawable.right,
                     enabled = viewModel.isNextEnabled,
                 ) {
                     viewModel.next()
